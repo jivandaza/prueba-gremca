@@ -1,0 +1,6 @@
+# Redirigir todas las solicitudes al directorio /public/
+RewriteEngine On
+
+# Si la solicitud ya está en /public/, no redirigir nuevamente
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]

@@ -1,0 +1,12 @@
+{
+  "name": "gremca/registro-labores",
+  "description": "Aplicación web para registrar labores realizadas en campo",
+  "require": {
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
