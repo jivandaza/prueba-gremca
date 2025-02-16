@@ -12,8 +12,8 @@ $router = new Router();
 
 // Rutas de la aplicación
 $router->addRoute('GET', '/', 'RegistroController@index');
-$router->addRoute('GET', '/registros', 'RegistroController@index');
-$router->addRoute('POST', '/registros/store', 'RegistroController@store');
-$router->addRoute('DELETE', '/registros/delete/([0-9]+)', 'RegistroController@delete');
+$router->addRoute('POST', '/store', 'RegistroController@store');
+$router->addRoute('PUT', '/update', 'RegistroController@update');
+$router->addRoute('DELETE', '/delete/([0-9]+)', 'RegistroController@delete');
 
 $router->handleRequest();

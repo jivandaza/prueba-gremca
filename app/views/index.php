@@ -1,12 +1,16 @@
 <?php
-    include_once __DIR__ . '/../layouts/header.php';
+    include_once __DIR__ . '/layouts/header.php';
 ?>
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center">Registro de Labores</h2>
 
     <!-- Formulario -->
-    <form id="laborForm" action="/prueba_gremca/registros/store" method="POST" class="mb-4">
+    <form id="laborForm"
+          action="<?php echo isset($registroEdit) ? '/update' : '/store'; ?>"
+          method="<?php echo isset($registroEdit) ? 'PUT' : 'POST'; ?>"
+          class="mb-4"
+    >
         <?php if ($registroEdit): ?>
             <input type="hidden" name="id" value="<?= $registroEdit['id'] ?>">
         <?php endif; ?>
@@ -82,8 +86,8 @@
                 <td><?= $registro['empleado'] ?></td>
                 <td><?= $registro['lote'] ?></td>
                 <td>
-                    <a href="/prueba_gremca/registros?edit=<?= $registro['id'] ?>" class="btn btn-warning btn-sm">Actualizar</a>
-                    <a href="/prueba_gremca/registros/delete/<?= $registro['id'] ?>" class="btn btn-danger btn-sm btn-delete">Eliminar</a>
+                    <a href="/prueba_gremca/?edit=<?= $registro['id'] ?>" class="btn btn-warning btn-sm">Actualizar</a>
+                    <a href="/delete/<?= $registro['id'] ?>" class="btn btn-danger btn-sm btn-delete">Eliminar</a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -92,5 +96,5 @@
 </div>
 
 <?php
-    include_once __DIR__ . '/../layouts/footer.php';
+    include_once __DIR__ . '/layouts/footer.php';
 ?>

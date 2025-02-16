@@ -53,10 +53,13 @@
             });
 
             try {
-                const url = form.getAttribute('action');
+                const url = '/prueba_gremca' + form.getAttribute('action');
+                const methodFrm = form.getAttribute('method');
+
+                console.log(url);
 
                 const response = await fetch(url, {
-                    method: 'POST',
+                    method: methodFrm,
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -68,7 +71,7 @@
                     Swal.fire({
                         icon: 'success',
                         title: '¡Éxito!',
-                        text: result.message || 'Registro guardado exitosamente',
+                        text: result.message,
                     }).then(() => {
                         window.location.href = '/prueba_gremca';
                     });
@@ -77,7 +80,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: error.message || 'Error al guardar el registro',
+                        text: error.message,
                     });
                 }
             } catch (error) {
@@ -95,7 +98,8 @@
         btnDeleteList.forEach((btn) => {
             btn.addEventListener('click', async function (e) {
                 e.preventDefault();
-                const url = btn.getAttribute('href');
+
+                const url = '/prueba_gremca' +  btn.getAttribute('href');
 
                 try {
                     const response = await fetch(url, {
@@ -110,7 +114,7 @@
                         Swal.fire({
                             icon: 'success',
                             title: '¡Éxito!',
-                            text: result.message || 'Registro eliminado exitosamente',
+                            text: result.message,
                         }).then(() => {
                             window.location.href = '/prueba_gremca';
                         });;
@@ -119,7 +123,7 @@
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
-                            text: error.message || 'Error al eliminar el registro',
+                            text: error.message,
                         });
                     }
                 } catch (error) {

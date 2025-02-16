@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
-use App\Core\Model;
+use App\Core\Database;
 
-class RegistroModel extends Model
+class RegistroModel
 {
+    protected $db;
+
+    public function __construct()
+    {
+        $this->db = Database::getInstance();
+    }
+
     public function getAll()
     {
         try {
@@ -20,34 +27,6 @@ class RegistroModel extends Model
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             throw new \Exception("Error al obtener todos los registros: " . $e->getMessage());
-        }
-    }
-
-    public function getAllLabores()
-    {
-        try {
-            $query = "SELECT id, nombre FROM labores";
-
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            throw new \Exception("Error al obtener las labores: " . $e->getMessage());
-        }
-    }
-
-    public function getAllLotes()
-    {
-        try {
-            $query = "SELECT id, nombre FROM lotes";
-
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-
-            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        } catch (\PDOException $e) {
-            throw new \Exception("Error al obtener los lotes: " . $e->getMessage());
         }
     }
 
