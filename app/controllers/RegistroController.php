@@ -62,7 +62,7 @@ class RegistroController extends Controller
         try {
             $data = json_decode(file_get_contents('php://input'), true);
 
-            ValidateData($data);
+            $this->validateData($data);
 
             $this->model->create($data);
             echo json_encode(['message' => 'Registro creado exitosamente']);
@@ -77,6 +77,8 @@ class RegistroController extends Controller
     {
         try {
             $data = json_decode(file_get_contents('php://input'), true);
+
+            $this->validateData($data);
 
             $this->model->update($data['id'], $data);
             echo json_encode(['message' => 'Registro actualizado exitosamente']);
